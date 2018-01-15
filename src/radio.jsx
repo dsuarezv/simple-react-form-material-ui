@@ -3,19 +3,20 @@ import RadioButton from 'material-ui/RadioButton'
 import * as Colors from 'material-ui/styles/colors'
 import {FieldType, registerType} from 'simple-react-form'
 import styles from './styles'
+import PropTypes from 'prop-types'
 
 const propTypes = {
   ...FieldType.propTypes,
   /**
    * The options for the select input. Each item must have label and value.
    */
-  options: React.PropTypes.arrayOf(React.PropTypes.shape({
-    label: React.PropTypes.string.isRequired,
-    value: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
+  options: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
     ]).isRequired,
-    description: React.PropTypes.string
+    description: PropTypes.string
   })).isRequired
 }
 
