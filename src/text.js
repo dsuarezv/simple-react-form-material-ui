@@ -54,13 +54,14 @@ export default class TextFieldComponent extends React.Component {
     var fieldType = this.props.fieldType || this.type || 'text'
     return (
       <TextField
-        ref='input'
+        //ref='input'
         fullWidth
+        label={this.props.label}
         value={typeof this.props.value !== 'undefined' ? this.props.value : ''}
         type={fieldType}
-        floatingLabelText={this.props.useHint ? null : this.props.label}
-        hintText={this.props.useHint ? this.props.label : null}
-        errorText={this.props.errorMessage}
+        //floatingLabelText={this.props.useHint ? null : this.props.label}
+        //hintText={this.props.useHint ? this.props.label : null}
+        //errorText={this.props.errorMessage}
         disabled={this.props.disabled}
         onChange={this.onChange.bind(this)}
         onKeyDown={this.onKeyDown.bind(this)}
@@ -74,21 +75,21 @@ export default class TextFieldComponent extends React.Component {
 TextFieldComponent.propTypes = propTypes
 TextFieldComponent.defaultProps = defaultProps
 
-class StringFieldComponent extends TextFieldComponent {
+export class StringFieldComponent extends TextFieldComponent {
   constructor (props) {
     super(props)
     this.type = 'text'
   }
 }
 
-class NumberFieldComponent extends TextFieldComponent {
+export class NumberFieldComponent extends TextFieldComponent {
   constructor (props) {
     super(props)
     this.type = 'number'
   }
 }
 
-class DateFieldComponent extends TextFieldComponent {
+export class DateFieldComponent extends TextFieldComponent {
   constructor (props) {
     super(props)
     this.type = 'date'

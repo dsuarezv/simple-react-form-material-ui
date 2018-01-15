@@ -17,10 +17,9 @@ export default class CheckboxComponent extends React.Component {
     return (
       <div style={{ paddingTop: 10, paddingBottom: 10 }}>
         <Checkbox
-          label={this.props.label}
           disabled={this.props.disabled}
-          checked={this.props.value}
-          onCheck={() => this.props.onChange(!this.props.value)}
+          checked={typeof this.props.value !== 'undefined' ? this.props.value : false }
+          onChange={() => this.props.onChange(!this.props.value)}
           {...this.props.passProps}
         />
         <span style={{ color: Colors.red[500] }}>{this.props.errorMessage}</span>
