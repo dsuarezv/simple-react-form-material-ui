@@ -1,6 +1,6 @@
 import React from 'react'
 import TextField from 'material-ui/TextField'
-import {FieldType, registerType} from 'simple-react-form'
+import {FieldType} from 'simple-react-form'
 import PropTypes from 'prop-types'
 
 const propTypes = {
@@ -62,8 +62,3 @@ export default class TextareaComponent extends React.Component {
 
 TextareaComponent.propTypes = propTypes
 TextareaComponent.defaultProps = defaultProps
-
-registerType({
-  type: 'textarea',
-  component: TextareaComponent
-})

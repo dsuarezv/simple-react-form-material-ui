@@ -1,5 +1,5 @@
 import React from 'react'
-import {FieldType, registerType} from 'simple-react-form'
+import {FieldType} from 'simple-react-form'
 import _ from 'underscore'
 
 import UploadButton from './upload-button'
@@ -257,8 +257,3 @@ export default class Component extends React.Component {
 
 Component.propTypes = propTypes
 Component.defaultProps = defaultProps
-
-registerType({
-  type: 'file',
-  component: Component
-})

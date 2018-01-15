@@ -1,7 +1,7 @@
 import React from 'react'
 import Checkbox from 'material-ui/Checkbox'
 import * as Colors from 'material-ui/styles/colors'
-import {FieldType, registerType} from 'simple-react-form'
+import {FieldType} from 'simple-react-form'
 
 const propTypes = {
   ...FieldType.propTypes
@@ -31,13 +31,3 @@ export default class CheckboxComponent extends React.Component {
 
 CheckboxComponent.propTypes = propTypes
 CheckboxComponent.defaultProps = defaultProps
-
-registerType({
-  type: 'checkbox',
-  component: CheckboxComponent
-})
-
-registerType({
-  type: 'boolean',
-  component: CheckboxComponent
-})

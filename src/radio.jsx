@@ -1,7 +1,7 @@
 import React from 'react'
 import RadioButton from 'material-ui/RadioButton'
 import * as Colors from 'material-ui/styles/colors'
-import {FieldType, registerType} from 'simple-react-form'
+import {FieldType} from 'simple-react-form'
 import styles from './styles'
 import PropTypes from 'prop-types'
 
@@ -62,8 +62,3 @@ export default class RadioComponent extends React.Component {
 
 RadioComponent.propTypes = propTypes
 RadioComponent.defaultProps = defaultProps
-
-registerType({
-  type: 'radio',
-  component: RadioComponent
-})
