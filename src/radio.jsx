@@ -1,6 +1,6 @@
 import React from 'react'
 import RadioButton from 'material-ui/RadioButton'
-import * as Colors from 'material-ui/styles/colors'
+import * as Colors from 'material-ui/colors'
 import {FieldType} from 'simple-react-form'
 import styles from './styles'
 import PropTypes from 'prop-types'
@@ -38,7 +38,7 @@ export default class RadioComponent extends React.Component {
           style={{ marginBotton: 16, marginTop: 16 }}
           />
           <div
-          style={{ marginLeft: 40, color: Colors.grey500, cursor: 'pointer' }}
+          style={{ marginLeft: 40, color: Colors.grey[500], cursor: 'pointer' }}
           onClick={() => this.props.onChange(item.value)}>
             {(item.description || '').split('\n').map((text, index) => <div key={index}>{text}</div>)}
           </div>
