@@ -1,5 +1,6 @@
 import React from 'react'
-import RadioButton from 'material-ui/RadioButton'
+import Radio, { RadioGroup } from 'material-ui/Radio'
+import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form';
 import * as Colors from 'material-ui/colors'
 import {FieldType} from 'simple-react-form'
 import styles from './styles'
@@ -29,36 +30,60 @@ export default class RadioComponent extends React.Component {
   renderItems () {
     return this.props.options.map((item) => {
       return (
-        <div key={item.value}>
-          <RadioButton
-          label={item.label}
-          checked={item.value === this.props.value}
-          onCheck={() => this.props.onChange(item.value)}
-          disabled={this.props.disabled}
-          style={{ marginBotton: 16, marginTop: 16 }}
-          />
-          <div
-          style={{ marginLeft: 40, color: Colors.grey[500], cursor: 'pointer' }}
-          onClick={() => this.props.onChange(item.value)}>
-            {(item.description || '').split('\n').map((text, index) => <div key={index}>{text}</div>)}
-          </div>
-        </div>
+        
+        <FormControlLabel 
+          value={item.value} 
+          control={<Radio />} 
+          label={item.label} 
+          checked={item.value === this.props.value}/>
       )
     })
   }
 
+  onChange (event, other) {
+    //const value = this.isNumberType() ? Number(event.target.value) : event.target.value
+    //this.props.onChange(value)
+  }
+
   render () {
     return (
-      <div style={styles.fieldContainer}>
-        <div style={styles.mirrorLabel}>
-          {this.props.label}
-        </div>
-        {this.renderItems()}
-        <div style={styles.errorMessage}>{this.props.errorMessage}</div>
-      </div>
+      <FormControl 
+          component="fieldset"
+          required={this.props.required} 
+          error={typeof this.props.errorMessage !== 'undefined'} 
+          //className={classes.formControl}
+      >
+        <FormLabel component="legend">{this.props.label}</FormLabel>
+        <RadioGroup
+          //aria-label="gender"
+          //name="gender2"
+          //className={classes.group}
+          value={this.props.value}
+          onChange={this.handleChange}
+        >
+          {/* <FormControlLabel value="male" control={<Radio />} label="Male" />
+          <FormControlLabel value="female" control={<Radio />} label="Female" />
+          <FormControlLabel value="other" control={<Radio />} label="Other" />
+          <FormControlLabel value="disabled" disabled control={<Radio />} label="Disabled" /> */}
+        </RadioGroup>
+        <FormHelperText>{this.props.errorMessage}</FormHelperText>
+      </FormControl>
+
+      
+      // <div style={styles.fieldContainer}>
+      //   <div style={styles.mirrorLabel}>
+      //     {this.props.label}
+      //   </div>
+      //   {this.renderItems()}
+      //   <div style={styles.errorMessage}>{this.props.errorMessage}</div>
+      // </div>
+      
     )
   }
 }
 
 RadioComponent.propTypes = propTypes
 RadioComponent.defaultProps = defaultProps
+
+
+

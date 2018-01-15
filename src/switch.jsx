@@ -1,5 +1,5 @@
 import React from 'react'
-import Toggle from 'material-ui/Toggle'
+import Switch from 'material-ui/Switch'
 import {FieldType} from 'simple-react-form'
 import styles from './styles'
 
@@ -11,16 +11,16 @@ const defaultProps = {
 
 }
 
-export default class ToggleComponent extends React.Component {
+export default class SwitchComponent extends React.Component {
 
   render () {
     return (
       <div>
-        <Toggle
+        <Switch
           label={this.props.label}
-          defaultToggled={!!this.props.value}
+          value={this.props.value}
           disabled={this.props.disabled}
-          onToggle={() => this.props.onChange(!this.props.value)}
+          onChange={() => this.props.onChange(!this.props.value)}
           {...this.props.passProps}/>
         <div style={styles.errorMessage}>{this.props.errorMessage}</div>
       </div>
@@ -29,5 +29,5 @@ export default class ToggleComponent extends React.Component {
 
 }
 
-ToggleComponent.propTypes = propTypes
-ToggleComponent.defaultProps = defaultProps
+SwitchComponent.propTypes = propTypes
+SwitchComponent.defaultProps = defaultProps
