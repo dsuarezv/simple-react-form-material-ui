@@ -1,7 +1,7 @@
 import React from 'react'
 import Switch from 'material-ui/Switch'
-import {FieldType} from 'simple-react-form'
-import styles from './styles'
+import { FormControlLabel, FormHelperText } from 'material-ui/Form';
+import { FieldType } from 'simple-react-form'
 
 const propTypes = {
   ...FieldType.propTypes
@@ -15,15 +15,18 @@ export default class SwitchComponent extends React.Component {
 
   render () {
     return (
-      <div>
-        <Switch
-          label={this.props.label}
-          value={this.props.value}
-          disabled={this.props.disabled}
-          onChange={() => this.props.onChange(!this.props.value)}
-          {...this.props.passProps}/>
-        <div style={styles.errorMessage}>{this.props.errorMessage}</div>
-      </div>
+      <FormControlLabel
+        control={        
+          <Switch
+            checked={this.props.value}
+            disabled={this.props.disabled}
+            onChange={() => this.props.onChange(!this.props.value)}
+            {...this.props.passProps}/>
+        } 
+        label={this.props.label}
+      >
+        <FormHelperText>{this.props.errorMessage}</FormHelperText>
+      </FormControlLabel>
     )
   }
 

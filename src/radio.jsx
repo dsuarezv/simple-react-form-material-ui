@@ -1,9 +1,9 @@
 import React from 'react'
 import Radio, { RadioGroup } from 'material-ui/Radio'
 import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form';
-import * as Colors from 'material-ui/colors'
-import {FieldType} from 'simple-react-form'
-import styles from './styles'
+import { FieldType } from 'simple-react-form'
+//import * as Colors from 'material-ui/colors'
+//import styles from './styles'
 import PropTypes from 'prop-types'
 
 const propTypes = {
@@ -32,6 +32,7 @@ export default class RadioComponent extends React.Component {
       return (
         
         <FormControlLabel 
+          key={item.value}
           value={item.value} 
           control={<Radio />} 
           label={item.label} 
@@ -40,10 +41,10 @@ export default class RadioComponent extends React.Component {
     })
   }
 
-  onChange (event, other) {
-    //const value = this.isNumberType() ? Number(event.target.value) : event.target.value
-    //this.props.onChange(value)
-  }
+  handleChange = (event, value) => {
+    //this.setState({ value });
+    
+  };
 
   render () {
     return (
@@ -55,8 +56,6 @@ export default class RadioComponent extends React.Component {
       >
         <FormLabel component="legend">{this.props.label}</FormLabel>
         <RadioGroup
-          //aria-label="gender"
-          //name="gender2"
           //className={classes.group}
           value={this.props.value}
           onChange={this.handleChange}
@@ -65,6 +64,7 @@ export default class RadioComponent extends React.Component {
           <FormControlLabel value="female" control={<Radio />} label="Female" />
           <FormControlLabel value="other" control={<Radio />} label="Other" />
           <FormControlLabel value="disabled" disabled control={<Radio />} label="Disabled" /> */}
+          {this.renderItems()}
         </RadioGroup>
         <FormHelperText>{this.props.errorMessage}</FormHelperText>
       </FormControl>
