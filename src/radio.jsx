@@ -30,7 +30,6 @@ export default class RadioComponent extends React.Component {
   renderItems () {
     return this.props.options.map((item) => {
       return (
-        
         <FormControlLabel 
           key={item.value}
           value={item.value} 
@@ -42,8 +41,7 @@ export default class RadioComponent extends React.Component {
   }
 
   handleChange = (event, value) => {
-    //this.setState({ value });
-    
+    this.props.onChange(value);
   };
 
   render () {
@@ -60,10 +58,6 @@ export default class RadioComponent extends React.Component {
           value={this.props.value}
           onChange={this.handleChange}
         >
-          {/* <FormControlLabel value="male" control={<Radio />} label="Male" />
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-          <FormControlLabel value="other" control={<Radio />} label="Other" />
-          <FormControlLabel value="disabled" disabled control={<Radio />} label="Disabled" /> */}
           {this.renderItems()}
         </RadioGroup>
         <FormHelperText>{this.props.errorMessage}</FormHelperText>
