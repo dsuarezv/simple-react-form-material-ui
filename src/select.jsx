@@ -1,8 +1,9 @@
 import React from 'react'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
-import {FieldType} from 'simple-react-form'
-import _ from 'underscore'
+import Input, { InputLabel } from 'material-ui/Input';
+import { MenuItem } from 'material-ui/Menu';
+import { FormControl, FormHelperText } from 'material-ui/Form';
+import Select from 'material-ui/Select';
+import { FieldType } from 'simple-react-form'
 import PropTypes from 'prop-types'
 
 const propTypes = {
@@ -28,49 +29,33 @@ const defaultProps = {
 
 export default class SelectComponent extends React.Component {
 
-  getOptions () {
-    if (this.props.options) {
-      return this.props.options
-    } else if (this.props.fieldSchema && this.props.fieldSchema.allowedValues) {
-      return _.map(this.props.fieldSchema.allowedValues, function (allowedValue) {
-        return {
-          label: allowedValue,
-          value: allowedValue
-        }
-      })
-    } else {
-      throw new Error('You must set the options for the select field')
-    }
-  }
-
-  getDefaultValue () {
-    if (this.props.defaultValue) {
-      return this.props.defaultValue
-    } else if (this.props.fieldSchema && this.props.fieldSchema.defaultValue) {
-      return this.props.fieldSchema.defaultValue
-    }
-  }
-
   componentDidMount () {
     if (!this.props.value) {
-      this.props.onChange(this.getDefaultValue())
+      this.props.onChange(this.props.defaultValue);
     }
+  }
+
+  handleChange = (event) => {
+    this.props.onChange(event.target.value);
   }
 
   render () {
     return (
-      <SelectField
-        value={String(this.props.value)}
-        defaultValue={this.getDefaultValue()}
-        fullWidth
-        disabled={this.props.disabled}
-        floatingLabelText={this.props.label}
-        errorText={this.props.errorMessage}
-        {...this.props.passProps}>
-        {this.getOptions().map((item) => (
-          <MenuItem key={item.value} value={String(item.value)} primaryText={item.label} onTouchTap={(value) => this.props.onChange(item.value)} />
-        ))}
-      </SelectField>
+      <FormControl fullWidth>
+          <InputLabel htmlFor={this.props.fieldName}>{this.props.label}</InputLabel>
+          <Select
+            value={this.props.value}
+            onChange={this.handleChange}
+            input={<Input name={this.props.fieldName} id="age-simple" />}
+          >
+            {this.props.options.map( item => (
+                <MenuItem key={item.value} value={String(item.value)}>
+                  {item.label}
+                </MenuItem>
+              )
+            )}
+          </Select>
+        </FormControl>
     )
   }
 }
